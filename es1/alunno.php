@@ -1,6 +1,6 @@
 <?php
 
-    class Alunno{
+    class Alunno implements JsonSerializable{
         private $nome;
         private $cognome;
         private $eta;
@@ -31,11 +31,19 @@
       function set_eta($eta) {
         return $this->eta;
       }
-
+      /*
       function stampa()
       {
         echo "{$this -> nome} {$this -> cognome} {$this -> eta} <br>";
       }
+      */
 
-    }
+      public function jsonSerialize(): array {
+        return [
+          'nome'=> $this->nome,
+          'cognome'=> $this->cognome,
+          'eta'=> $this->eta
+        ];
+      }
+  }
 ?>
